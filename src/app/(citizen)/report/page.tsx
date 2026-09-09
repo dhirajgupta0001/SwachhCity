@@ -110,9 +110,7 @@ export default function ReportPage() {
         </Card>
 
         <div className="flex justify-center gap-4 pt-4">
-          <Button asChild>
-            <Link href={`/history`}>Track Complaint</Link>
-          </Button>
+          <Button render={<Link href={`/history`} />}>Track Complaint</Button>
           <Button variant="outline" onClick={() => {
             setSuccessData(null);
             setCategoryId("");
@@ -143,7 +141,7 @@ export default function ReportPage() {
             {/* Category */}
             <div className="space-y-2">
               <label className="text-sm font-medium">Issue Category *</label>
-              <Select value={categoryId} onValueChange={setCategoryId} required>
+              <Select value={categoryId} onValueChange={(val: string | null) => setCategoryId(val || "")} required>
                 <SelectTrigger>
                   <SelectValue placeholder="Select a category" />
                 </SelectTrigger>

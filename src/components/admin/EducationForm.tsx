@@ -45,10 +45,8 @@ export function EducationForm({ initialData }: EducationFormProps) {
   return (
     <div className="space-y-6 max-w-4xl pb-12">
       <div className="flex items-center gap-4">
-        <Button variant="ghost" size="icon" asChild>
-          <Link href="/admin/content">
-            <ArrowLeft className="w-5 h-5" />
-          </Link>
+        <Button variant="ghost" size="icon" render={<Link href="/admin/content" />}>
+          <ArrowLeft className="w-5 h-5" />
         </Button>
         <div>
           <h1 className="text-2xl font-bold tracking-tight">

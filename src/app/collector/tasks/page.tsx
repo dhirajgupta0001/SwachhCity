@@ -32,11 +32,11 @@ export default function CollectorTasksList() {
         .in("status", ["ASSIGNED", "IN_PROGRESS", "SCHEDULED"]);
 
       const formattedComplaints = (complaints || []).map(c => ({
-        ...c, taskType: "COMPLAINT", typeLabel: c.category?.name, sortDate: new Date(c.created_at)
+        ...c, taskType: "COMPLAINT", typeLabel: (c.category as any)?.name, sortDate: new Date(c.created_at)
       }));
 
       const formattedPickups = (pickups || []).map(p => ({
-        ...p, taskType: "PICKUP", typeLabel: p.waste_type?.name, sortDate: new Date(p.preferred_date)
+        ...p, taskType: "PICKUP", typeLabel: (p.waste_type as any)?.name, sortDate: new Date(p.preferred_date)
       }));
 
       const combined = [...formattedComplaints, ...formattedPickups].sort((a, b) => a.sortDate.getTime() - b.sortDate.getTime());
@@ -91,10 +91,8 @@ export default function CollectorTasksList() {
                   
                   <div className="flex flex-col items-end justify-center border-t sm:border-t-0 pt-3 sm:pt-0 sm:pl-4 sm:border-l gap-3">
                     <StatusBadge status={task.status} />
-                    <Button variant="outline" className="gap-1 text-primary w-full" asChild>
-                      <Link href={`/collector/tasks/${task.taskType.toLowerCase()}/${task.id}`}>
-                        Open Task <ArrowRight className="h-4 w-4" />
-                      </Link>
+                    <Button variant="outline" className="gap-1 text-primary w-full" render={<Link href={`/collector/tasks/${task.taskType.toLowerCase()}/${task.id}`} />}>
+                      Open Task <ArrowRight className="h-4 w-4" />
                     </Button>
                   </div>
                 </div>

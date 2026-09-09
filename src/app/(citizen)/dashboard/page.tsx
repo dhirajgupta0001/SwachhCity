@@ -120,9 +120,7 @@ export default function CitizenDashboard() {
                     </div>
                     <div className="flex flex-col items-end gap-2 shrink-0 ml-2">
                       <StatusBadge status={comp.status} />
-                      <Button variant="link" size="sm" className="h-auto p-0" asChild>
-                        <Link href={`/history/${comp.id}`}>View</Link>
-                      </Button>
+                      <Button variant="link" size="sm" className="h-auto p-0" render={<Link href={`/history/${comp.id}`} />}>View</Button>
                     </div>
                   </div>
                 ))}
@@ -130,9 +128,7 @@ export default function CitizenDashboard() {
             )}
             
             {recentComplaints.length > 0 && (
-              <Button variant="outline" className="w-full mt-4" asChild>
-                <Link href="/history">View all complaints</Link>
-              </Button>
+              <Button variant="outline" className="w-full mt-4" render={<Link href="/history" />}>View all complaints</Button>
             )}
           </CardContent>
         </Card>
@@ -151,9 +147,7 @@ export default function CitizenDashboard() {
                   title="No pickup requests"
                   description="You haven't scheduled any collections."
                   action={
-                    <Button variant="outline" size="sm" asChild>
-                      <Link href="/pickup">Request Pickup</Link>
-                    </Button>
+                    <Button variant="outline" size="sm" render={<Link href="/pickup" />}>Request Pickup</Button>
                   }
                 />
               </div>
@@ -175,9 +169,7 @@ export default function CitizenDashboard() {
                     </div>
                     <div className="flex flex-col items-end gap-2 shrink-0 ml-2">
                       <StatusBadge status={pick.status} />
-                      <Button variant="link" size="sm" className="h-auto p-0" asChild>
-                        <Link href={`/history/pickup/${pick.id}`}>View</Link>
-                      </Button>
+                      <Button variant="link" size="sm" className="h-auto p-0" render={<Link href={`/history/pickup/${pick.id}`} />}>View</Button>
                     </div>
                   </div>
                 ))}
@@ -185,9 +177,7 @@ export default function CitizenDashboard() {
             )}
             
             {recentPickups.length > 0 && (
-              <Button variant="outline" className="w-full mt-4" asChild>
-                <Link href="/history?tab=pickups">View all requests</Link>
-              </Button>
+              <Button variant="outline" className="w-full mt-4" render={<Link href="/history?tab=pickups" />}>View all requests</Button>
             )}
           </CardContent>
         </Card>
@@ -199,9 +189,7 @@ export default function CitizenDashboard() {
             <h3 className="font-semibold text-primary">Recycling Tip of the Day</h3>
             <p className="text-sm text-gray-700">Make sure to rinse plastic containers before tossing them in the recycling bin. Food residue can contaminate entire batches of recyclables!</p>
           </div>
-          <Button variant="outline" asChild>
-            <Link href="/education">Learn More</Link>
-          </Button>
+          <Button variant="outline" render={<Link href="/education" />}>Learn More</Button>
         </CardContent>
       </Card>
     </div>

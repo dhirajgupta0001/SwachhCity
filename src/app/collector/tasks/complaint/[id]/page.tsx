@@ -162,8 +162,8 @@ export default function CollectorComplaintDetails() {
                       )}
                     </div>
                   </div>
-                  <Button variant="outline" size="sm" asChild>
-                    <a href={mapUrl} target="_blank" rel="noreferrer">Open in Maps</a>
+                  <Button variant="outline" size="sm" render={<a href={mapUrl} target="_blank" rel="noreferrer" />}>
+                    Open in Maps
                   </Button>
                 </div>
                 {task.latitude && task.longitude && (
@@ -214,10 +214,8 @@ export default function CollectorComplaintDetails() {
               {task.status === "IN_PROGRESS" && (
                 <>
                   <Dialog>
-                    <DialogTrigger asChild>
-                      <Button className="w-full gap-2 bg-green-600 hover:bg-green-700 text-white" size="lg">
-                        <CheckCircle2 className="h-5 w-5" /> Mark Resolved
-                      </Button>
+                    <DialogTrigger render={<Button className="w-full gap-2 bg-green-600 hover:bg-green-700 text-white" size="lg" />}>
+                      <CheckCircle2 className="h-5 w-5" /> Mark Resolved
                     </DialogTrigger>
                     <DialogContent>
                       <DialogHeader>
@@ -259,10 +257,8 @@ export default function CollectorComplaintDetails() {
                   </Dialog>
 
                   <Dialog>
-                    <DialogTrigger asChild>
-                      <Button variant="outline" className="w-full gap-2 text-red-600 hover:text-red-700 border-red-200 hover:bg-red-50">
-                        <AlertTriangle className="h-4 w-4" /> Report Issue
-                      </Button>
+                    <DialogTrigger render={<Button variant="outline" className="w-full gap-2 text-red-600 hover:text-red-700 border-red-200 hover:bg-red-50" />}>
+                      <AlertTriangle className="h-4 w-4" /> Report Issue
                     </DialogTrigger>
                     <DialogContent>
                       <DialogHeader>

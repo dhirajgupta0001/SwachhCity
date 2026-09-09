@@ -59,7 +59,7 @@ export default function ProfilePage() {
             <div className="space-y-1">
               <span className="text-sm font-medium text-muted-foreground">Account Status</span>
               <div>
-                <StatusBadge status="ACTIVE" /> {/* Mocked until full status UI */}
+                <StatusBadge status={"ACTIVE" as any} /> {/* Mocked until full status UI */}
               </div>
             </div>
             <div className="space-y-1">

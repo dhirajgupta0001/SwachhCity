@@ -76,9 +76,7 @@ export default function HistoryPage() {
               title="No complaints found"
               description="You haven't reported any sanitation issues yet."
               action={
-                <Button asChild>
-                  <Link href="/report">Report an Issue</Link>
-                </Button>
+                <Button render={<Link href="/report" />}>Report an Issue</Button>
               }
             />
           ) : (
@@ -108,11 +106,9 @@ export default function HistoryPage() {
                         <span className="text-xs text-muted-foreground sm:hidden mb-0">
                           {new Date(item.created_at).toLocaleDateString()}
                         </span>
-                        <Button variant="ghost" className="gap-1 text-primary hover:text-primary hover:bg-primary/5" asChild>
-                          <Link href={`/history/${item.id}`}>
+                        <Button variant="ghost" className="gap-1 text-primary hover:text-primary hover:bg-primary/5" render={<Link href={`/history/${item.id}`} />}>
                             View Details <ArrowRight className="h-4 w-4" />
-                          </Link>
-                        </Button>
+                          </Button>
                       </div>
                     </div>
                   </CardContent>
@@ -129,9 +125,7 @@ export default function HistoryPage() {
               title="No pickup requests"
               description="You haven't requested any waste collections yet."
               action={
-                <Button asChild>
-                  <Link href="/pickup">Request Pickup</Link>
-                </Button>
+                <Button render={<Link href="/pickup" />}>Request Pickup</Button>
               }
             />
           ) : (
@@ -161,11 +155,9 @@ export default function HistoryPage() {
                         <span className="text-xs text-muted-foreground sm:hidden mb-0">
                           {new Date(item.created_at).toLocaleDateString()}
                         </span>
-                        <Button variant="ghost" className="gap-1 text-primary hover:text-primary hover:bg-primary/5" asChild>
-                          <Link href={`/history/pickup/${item.id}`}>
+                        <Button variant="ghost" className="gap-1 text-primary hover:text-primary hover:bg-primary/5" render={<Link href={`/history/pickup/${item.id}`} />}>
                             View Details <ArrowRight className="h-4 w-4" />
-                          </Link>
-                        </Button>
+                          </Button>
                       </div>
                     </div>
                   </CardContent>

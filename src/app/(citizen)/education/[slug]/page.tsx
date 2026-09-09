@@ -98,9 +98,7 @@ export default function EducationArticlePage() {
               Schedule a specialized pickup request and our collectors will handle it safely.
             </p>
           </div>
-          <Button asChild size="lg" className="shrink-0 w-full md:w-auto bg-blue-600 hover:bg-blue-700">
-            <Link href="/pickup">Request a Pickup</Link>
-          </Button>
+          <Button render={<Link href="/pickup" />} size="lg" className="shrink-0 w-full md:w-auto bg-blue-600 hover:bg-blue-700">Request a Pickup</Button>
         </div>
       )}
 

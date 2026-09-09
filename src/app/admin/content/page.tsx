@@ -70,11 +70,9 @@ export default function AdminContentPage() {
           <h1 className="text-2xl font-bold tracking-tight">Educational Content</h1>
           <p className="text-muted-foreground">Manage awareness articles and recycling guides.</p>
         </div>
-        <Button asChild className="gap-2">
-          <Link href="/admin/content/new">
+        <Button render={<Link href="/admin/content/new" />} className="gap-2">
             <Plus className="w-4 h-4" /> New Article
-          </Link>
-        </Button>
+          </Button>
       </div>
 
       <Card>
@@ -118,7 +116,7 @@ export default function AdminContentPage() {
                       <td className="px-6 py-4">
                         <div className="font-medium text-gray-900 flex items-center gap-2">
                           {c.title}
-                          {c.is_featured && <Star className="w-3 h-3 text-amber-500 fill-amber-500" title="Featured" />}
+                          {c.is_featured && <Star className="w-3 h-3 text-amber-500 fill-amber-500"  />}
                         </div>
                         <div className="text-xs text-muted-foreground mt-0.5">/{c.slug}</div>
                       </td>
@@ -145,12 +143,10 @@ export default function AdminContentPage() {
                           >
                             {c.is_published ? <EyeOff className="w-4 h-4 text-gray-500" /> : <Eye className="w-4 h-4 text-primary" />}
                           </Button>
-                          <Button variant="ghost" size="icon" asChild title="Edit">
-                            <Link href={`/admin/content/${c.id}/edit`}>
+                          <Button variant="ghost" size="icon" render={<Link href={`/admin/content/${c.id}/edit`} />} >
                               <Edit className="w-4 h-4 text-blue-500" />
-                            </Link>
-                          </Button>
-                          <Button variant="ghost" size="icon" title="Delete" onClick={() => setDeleteId(c.id)}>
+                            </Button>
+                          <Button variant="ghost" size="icon"  onClick={() => setDeleteId(c.id)}>
                             <Trash2 className="w-4 h-4 text-red-500" />
                           </Button>
                         </div>

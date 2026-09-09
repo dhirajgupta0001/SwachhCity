@@ -219,7 +219,7 @@ export default function AdminMap() {
                   <div className="space-y-2 min-w-[200px]">
                     <div className="flex justify-between items-center border-b pb-2">
                       <strong className="text-sm font-semibold">{m.reference_id}</strong>
-                      <StatusBadge status={m.status} />
+                      <StatusBadge status={m.status as import("@/components/custom/status-badge").StatusType} />
                     </div>
                     <div className="text-xs space-y-1">
                       <p><span className="font-semibold text-gray-500">Type:</span> {m.type}</p>
@@ -227,10 +227,8 @@ export default function AdminMap() {
                       <p><span className="font-semibold text-gray-500">Assignment:</span> {m.assigned_collector_id ? "Assigned" : "Unassigned"}</p>
                       <p className="line-clamp-2"><span className="font-semibold text-gray-500">Address:</span> {m.address}</p>
                     </div>
-                    <Button asChild size="sm" className="w-full h-7 mt-2 text-xs">
-                      <a href={m.type === "COMPLAINT" ? `/admin/complaints/${m.id}` : `/admin/pickups/${m.id}`} target="_blank">
-                        View Details
-                      </a>
+                    <Button render={<a href={m.type === "COMPLAINT" ? `/admin/complaints/${m.id}` : `/admin/pickups/${m.id}`} target="_blank" />} size="sm" className="w-full h-7 mt-2 text-xs">
+                      View Details
                     </Button>
                   </div>
                 </Popup>

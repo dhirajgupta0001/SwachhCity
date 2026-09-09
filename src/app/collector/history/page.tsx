@@ -32,11 +32,11 @@ export default function CollectorHistoryList() {
         .in("status", ["COMPLETED", "CLOSED", "FAILED", "CANCELLED"]);
 
       const formattedComplaints = (complaints || []).map(c => ({
-        ...c, taskType: "COMPLAINT", typeLabel: c.category?.name, sortDate: new Date(c.resolved_at || c.created_at)
+        ...c, taskType: "COMPLAINT", typeLabel: (c.category as any)?.name, sortDate: new Date(c.resolved_at || c.created_at)
       }));
 
       const formattedPickups = (pickups || []).map(p => ({
-        ...p, taskType: "PICKUP", typeLabel: p.waste_type?.name, sortDate: new Date(p.completed_at || p.created_at)
+        ...p, taskType: "PICKUP", typeLabel: (p.waste_type as any)?.name, sortDate: new Date(p.completed_at || p.created_at)
       }));
 
       const combined = [...formattedComplaints, ...formattedPickups].sort((a, b) => b.sortDate.getTime() - a.sortDate.getTime());
@@ -91,11 +91,9 @@ export default function CollectorHistoryList() {
                     <span className="text-xs text-muted-foreground">
                       {task.sortDate.toLocaleDateString()}
                     </span>
-                    <Button variant="ghost" size="sm" className="gap-1 text-primary hover:bg-primary/5 mt-1 w-full" asChild>
-                      <Link href={`/collector/tasks/${task.taskType.toLowerCase()}/${task.id}`}>
+                    <Button variant="ghost" size="sm" className="gap-1 text-primary hover:bg-primary/5 mt-1 w-full" render={<Link href={`/collector/tasks/${task.taskType.toLowerCase()}/${task.id}`} />}>
                         View Archive
-                      </Link>
-                    </Button>
+                      </Button>
                   </div>
                 </div>
               </CardContent>

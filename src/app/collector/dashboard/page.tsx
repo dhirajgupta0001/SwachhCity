@@ -53,14 +53,14 @@ export default function CollectorDashboard() {
       const formattedComplaints = (complaints || []).map(c => ({
         ...c,
         taskType: "COMPLAINT",
-        typeLabel: c.category?.name,
+        typeLabel: (c.category as any)?.name,
         sortDate: new Date(c.created_at)
       }));
 
       const formattedPickups = (pickups || []).map(p => ({
         ...p,
         taskType: "PICKUP",
-        typeLabel: p.waste_type?.name,
+        typeLabel: (p.waste_type as any)?.name,
         sortDate: new Date(p.preferred_date) // Assuming scheduled date is close to preferred
       }));
 
@@ -203,11 +203,9 @@ export default function CollectorDashboard() {
                   
                   <div className="flex flex-row sm:flex-col items-center sm:items-end justify-between sm:justify-center border-t sm:border-t-0 pt-3 sm:pt-0 gap-2">
                     <StatusBadge status={task.status} />
-                    <Button size="sm" asChild>
-                      <Link href={`/collector/tasks/${task.taskType.toLowerCase()}/${task.id}`}>
+                    <Button size="sm" render={<Link href={`/collector/tasks/${task.taskType.toLowerCase()}/${task.id}`} />}>
                         Open Task
-                      </Link>
-                    </Button>
+                      </Button>
                   </div>
                 </div>
               ))}

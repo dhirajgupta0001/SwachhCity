@@ -11,9 +11,7 @@ import { ArrowLeft, Calendar, Clock, Loader2, MapPin, Package, XCircle } from "l
 import dynamic from "next/dynamic";
 import { FeedbackWidget } from "@/components/custom/FeedbackWidget";
 
-const MapWrapper = dynamic(() => import("@/components/map/MapWrapper"), { 
-  ssr: false,
-});
+import { MapWrapper } from "@/components/map/MapWrapper";
 
 export default function PickupDetailsPage() {
   const params = useParams();
@@ -172,8 +170,8 @@ export default function PickupDetailsPage() {
                 </div>
                 {pickup.latitude && pickup.longitude && (
                   <MapWrapper 
-                    lat={pickup.latitude} 
-                    lng={pickup.longitude} 
+                    lat={pickup.latitude as any}
+                    lng={pickup.longitude as any}
                     title={pickup.address} 
                   />
                 )}

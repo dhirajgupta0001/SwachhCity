@@ -64,7 +64,7 @@ export default function AdminComplaintsList() {
           />
         </div>
         <div className="w-full sm:w-48">
-          <Select value={statusFilter} onValueChange={setStatusFilter}>
+          <Select value={statusFilter} onValueChange={(val: string | null) => setStatusFilter(val || "")}>
             <SelectTrigger>
               <SelectValue placeholder="Filter Status" />
             </SelectTrigger>
@@ -113,11 +113,9 @@ export default function AdminComplaintsList() {
                     <span className="text-xs text-muted-foreground">
                       {new Date(c.created_at).toLocaleDateString()}
                     </span>
-                    <Button variant="outline" className="gap-1 mt-1 w-full" asChild>
-                      <Link href={`/admin/complaints/${c.id}`}>
+                    <Button variant="outline" className="gap-1 mt-1 w-full" render={<Link href={`/admin/complaints/${c.id}`} />}>
                         Manage <ArrowRight className="h-4 w-4" />
-                      </Link>
-                    </Button>
+                      </Button>
                   </div>
                 </div>
               </CardContent>

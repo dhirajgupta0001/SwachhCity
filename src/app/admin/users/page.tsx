@@ -66,7 +66,7 @@ export default function AdminUsersList() {
           />
         </div>
         <div className="w-full sm:w-48">
-          <Select value={roleFilter} onValueChange={setRoleFilter}>
+          <Select value={roleFilter} onValueChange={(val: string | null) => setRoleFilter(val || "")}>
             <SelectTrigger>
               <SelectValue placeholder="Filter Role" />
             </SelectTrigger>
@@ -109,11 +109,9 @@ export default function AdminUsersList() {
                       <span className="text-xs font-bold px-2 py-0.5 rounded bg-gray-100">{u.role}</span>
                       <StatusBadge status={u.status} />
                     </div>
-                    <Button variant="outline" className="gap-1 w-full sm:w-auto" asChild>
-                      <Link href={`/admin/users/${u.id}`}>
+                    <Button variant="outline" className="gap-1 w-full sm:w-auto" render={<Link href={`/admin/users/${u.id}`} />}>
                         Manage <ArrowRight className="h-4 w-4" />
-                      </Link>
-                    </Button>
+                      </Button>
                   </div>
                 </div>
               </CardContent>

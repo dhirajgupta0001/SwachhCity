@@ -132,26 +132,24 @@ export function Navbar({ onMenuClick }: NavbarProps) {
         <div className="flex items-center gap-4">
           {user ? (
             <>
-              <Button variant="ghost" size="icon" className="relative text-gray-500 hover:text-gray-900" asChild>
-                <Link href="/notifications">
+              <Button variant="ghost" size="icon" className="relative text-gray-500 hover:text-gray-900" render={<Link href="/notifications" />}>
+                
                   <Bell className="h-5 w-5" />
                   {unreadCount > 0 && (
                     <span className="absolute top-1.5 right-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-red-600 text-[9px] font-bold text-white shadow-sm ring-2 ring-white">
                       {unreadCount > 99 ? '99+' : unreadCount}
                     </span>
                   )}
-                </Link>
-              </Button>
+                </Button>
 
               <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" className="relative h-8 w-8 rounded-full bg-primary/10 hover:bg-primary/20">
+                <DropdownMenuTrigger render={<Button variant="ghost" className="relative h-8 w-8 rounded-full bg-primary/10 hover:bg-primary/20" />}>
+                  
                     <span className="text-sm font-medium text-primary">
                       {profile?.full_name ? getInitials(profile.full_name) : <User className="h-4 w-4" />}
                     </span>
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent className="w-56" align="end" forceMount>
+                  </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-56" align="end" >
                   <DropdownMenuLabel className="font-normal">
                     <div className="flex flex-col space-y-1">
                       <p className="text-sm font-medium leading-none">{profile?.full_name || "User"}</p>
@@ -169,11 +167,11 @@ export function Navbar({ onMenuClick }: NavbarProps) {
             </>
           ) : (
             <div className="flex items-center gap-2">
-              <Button variant="ghost" asChild className="hidden sm:flex">
-                <Link href="/login">Sign In</Link>
+              <Button variant="ghost" render={<Link href="/login" />} className="hidden sm:flex">
+                Sign In
               </Button>
-              <Button asChild>
-                <Link href="/register">Register</Link>
+              <Button render={<Link href="/register" />}>
+                Register
               </Button>
             </div>
           )}

@@ -92,9 +92,7 @@ export default function PickupPage() {
         </Card>
 
         <div className="flex justify-center gap-4 pt-4">
-          <Button asChild>
-            <Link href={`/history`}>Track Request</Link>
-          </Button>
+          <Button render={<Link href={`/history`} />}>Track Request</Button>
           <Button variant="outline" onClick={() => {
             setSuccessData(null);
             setWasteTypeId("");
@@ -127,7 +125,7 @@ export default function PickupPage() {
               {/* Waste Type */}
               <div className="space-y-2">
                 <label className="text-sm font-medium">Waste Type *</label>
-                <Select value={wasteTypeId} onValueChange={setWasteTypeId} required>
+                <Select value={wasteTypeId} onValueChange={(val: string | null) => setWasteTypeId(val || "")} required>
                   <SelectTrigger>
                     <SelectValue placeholder="Select type" />
                   </SelectTrigger>
@@ -142,7 +140,7 @@ export default function PickupPage() {
               {/* Quantity */}
               <div className="space-y-2">
                 <label className="text-sm font-medium">Approximate Quantity *</label>
-                <Select value={quantity} onValueChange={setQuantity} required>
+                <Select value={quantity} onValueChange={(val: string | null) => setQuantity(val || "")} required>
                   <SelectTrigger>
                     <SelectValue placeholder="Select volume" />
                   </SelectTrigger>
@@ -201,7 +199,7 @@ export default function PickupPage() {
               {/* Preferred Time Window */}
               <div className="space-y-2">
                 <label className="text-sm font-medium">Preferred Time Window *</label>
-                <Select value={preferredTimeWindow} onValueChange={setPreferredTimeWindow} required>
+                <Select value={preferredTimeWindow} onValueChange={(val: string | null) => setPreferredTimeWindow(val || "")} required>
                   <SelectTrigger>
                     <SelectValue placeholder="Select time" />
                   </SelectTrigger>

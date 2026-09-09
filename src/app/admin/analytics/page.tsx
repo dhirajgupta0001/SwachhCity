@@ -152,9 +152,7 @@ export default function AnalyticsDashboardPage() {
             <h3 className="font-semibold text-blue-900">Geographic Operations</h3>
             <p className="text-sm text-blue-800">Need to see where problems are concentrated? Use the Operations Map to view spatial densities.</p>
           </div>
-          <Button asChild variant="outline" className="bg-white hover:bg-gray-50 border-blue-200">
-            <Link href="/admin/map">Open Operations Map</Link>
-          </Button>
+          <Button render={<Link href="/admin/map" />} variant="outline" className="bg-white hover:bg-gray-50 border-blue-200">Open Operations Map</Button>
         </CardContent>
       </Card>
 
@@ -206,7 +204,7 @@ export default function AnalyticsDashboardPage() {
                       outerRadius={100}
                       fill="#8884d8"
                       dataKey="value"
-                      label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+                      label={({ name, percent }) => `${name} ${((percent || 0) * 100).toFixed(0)}%`}
                     >
                       {distributions.complaintsByCategory.map((entry: any, index: number) => (
                         <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />

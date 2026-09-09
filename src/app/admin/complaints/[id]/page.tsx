@@ -180,19 +180,17 @@ export default function AdminComplaintDetails() {
             <CardContent className="flex flex-col gap-3">
               
               <Dialog>
-                <DialogTrigger asChild>
-                  <Button className="w-full gap-2" size="lg">
+                <DialogTrigger render={<Button className="w-full gap-2" size="lg" />}>
                     <UserPlus className="h-5 w-5" /> 
                     {task.assigned_collector_id ? "Reassign Collector" : "Assign Collector"}
-                  </Button>
-                </DialogTrigger>
+                  </DialogTrigger>
                 <DialogContent>
                   <DialogHeader>
                     <DialogTitle>Assign to Collector</DialogTitle>
                     <DialogDescription>Select an active collector to dispatch for this complaint.</DialogDescription>
                   </DialogHeader>
                   <div className="py-4 space-y-4">
-                    <Select value={selectedCollector} onValueChange={setSelectedCollector}>
+                    <Select value={selectedCollector} onValueChange={(val: string | null) => setSelectedCollector(val || "")}>
                       <SelectTrigger><SelectValue placeholder="Select a collector..." /></SelectTrigger>
                       <SelectContent>
                         {collectors.map(c => <SelectItem key={c.id} value={c.id}>{c.full_name}</SelectItem>)}
@@ -208,11 +206,9 @@ export default function AdminComplaintDetails() {
               </Dialog>
 
               <Dialog>
-                <DialogTrigger asChild>
-                  <Button variant="outline" className="w-full gap-2 text-orange-600 hover:text-orange-700 hover:bg-orange-50 border-orange-200">
+                <DialogTrigger render={<Button variant="outline" className="w-full gap-2 text-orange-600 hover:text-orange-700 hover:bg-orange-50 border-orange-200" />}>
                     <ShieldAlert className="h-4 w-4" /> Override Status
-                  </Button>
-                </DialogTrigger>
+                  </DialogTrigger>
                 <DialogContent>
                   <DialogHeader>
                     <DialogTitle>Administrative Status Override</DialogTitle>
@@ -221,7 +217,7 @@ export default function AdminComplaintDetails() {
                   <div className="py-4 space-y-4">
                     <div className="space-y-2">
                       <label className="text-sm font-medium">New Status</label>
-                      <Select value={newStatus} onValueChange={setNewStatus}>
+                      <Select value={newStatus} onValueChange={(val: string | null) => setNewStatus(val || "")}>
                         <SelectTrigger><SelectValue placeholder="Select status..." /></SelectTrigger>
                         <SelectContent>
                           <SelectItem value="CLOSED">Closed (Resolved/Duplicate)</SelectItem>

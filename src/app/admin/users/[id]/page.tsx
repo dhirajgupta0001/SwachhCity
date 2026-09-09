@@ -151,18 +151,16 @@ export default function AdminUserDetails() {
             <CardContent className="flex flex-col gap-3">
               
               <Dialog>
-                <DialogTrigger asChild>
-                  <Button className="w-full gap-2" variant="outline">
+                <DialogTrigger render={<Button className="w-full gap-2" variant="outline" />}>
                     <UserCog className="h-4 w-4" /> Change Role
-                  </Button>
-                </DialogTrigger>
+                  </DialogTrigger>
                 <DialogContent>
                   <DialogHeader>
                     <DialogTitle>Update User Role</DialogTitle>
                     <DialogDescription>Modify what sections of the system this user can access.</DialogDescription>
                   </DialogHeader>
                   <div className="py-4 space-y-4">
-                    <Select value={selectedRole} onValueChange={setSelectedRole}>
+                    <Select value={selectedRole} onValueChange={(val: string | null) => setSelectedRole(val || "")}>
                       <SelectTrigger><SelectValue /></SelectTrigger>
                       <SelectContent>
                         <SelectItem value="CITIZEN">Citizen</SelectItem>
@@ -180,18 +178,16 @@ export default function AdminUserDetails() {
               </Dialog>
 
               <Dialog>
-                <DialogTrigger asChild>
-                  <Button variant="outline" className="w-full gap-2 text-red-600 hover:text-red-700 hover:bg-red-50 border-red-200">
+                <DialogTrigger render={<Button variant="outline" className="w-full gap-2 text-red-600 hover:text-red-700 hover:bg-red-50 border-red-200" />}>
                     <ShieldAlert className="h-4 w-4" /> Account Status
-                  </Button>
-                </DialogTrigger>
+                  </DialogTrigger>
                 <DialogContent>
                   <DialogHeader>
                     <DialogTitle>Update Account Status</DialogTitle>
                     <DialogDescription>Suspend or disable access for this user.</DialogDescription>
                   </DialogHeader>
                   <div className="py-4 space-y-4">
-                    <Select value={selectedStatus} onValueChange={setSelectedStatus}>
+                    <Select value={selectedStatus} onValueChange={(val: string | null) => setSelectedStatus(val || "")}>
                       <SelectTrigger><SelectValue /></SelectTrigger>
                       <SelectContent>
                         <SelectItem value="ACTIVE">Active</SelectItem>

@@ -11,9 +11,7 @@ import Link from "next/link";
 import dynamic from "next/dynamic";
 import { FeedbackWidget } from "@/components/custom/FeedbackWidget";
 
-const MapWrapper = dynamic(() => import("@/components/map/MapWrapper"), { 
-  ssr: false,
-});
+import { MapWrapper } from "@/components/map/MapWrapper";
 
 export default function ComplaintDetailsPage() {
   const params = useParams();

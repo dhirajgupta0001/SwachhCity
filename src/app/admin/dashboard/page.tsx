@@ -163,9 +163,7 @@ export default function AdminDashboard() {
                           </div>
                           <p className="text-sm font-medium">{c.category?.name}</p>
                         </div>
-                        <Button size="sm" variant="outline" asChild>
-                          <Link href={`/admin/complaints/${c.id}`}>Assign</Link>
-                        </Button>
+                        <Button size="sm" variant="outline" render={<Link href={`/admin/complaints/${c.id}`} />}>Assign</Button>
                       </div>
                     ))}
                   </div>
@@ -184,9 +182,7 @@ export default function AdminDashboard() {
                           <p className="font-mono text-xs font-semibold text-gray-500">{p.reference_id}</p>
                           <p className="text-sm font-medium">{p.waste_type?.name}</p>
                         </div>
-                        <Button size="sm" variant="outline" asChild>
-                          <Link href={`/admin/pickups/${p.id}`}>Review</Link>
-                        </Button>
+                        <Button size="sm" variant="outline" render={<Link href={`/admin/pickups/${p.id}`} />}>Review</Button>
                       </div>
                     ))}
                   </div>
@@ -224,9 +220,7 @@ export default function AdminDashboard() {
                     </div>
                   ))}
                   <div className="pt-4 border-t">
-                    <Button variant="link" className="w-full text-xs" asChild>
-                      <Link href="/admin/users?role=COLLECTOR">Manage Workforce</Link>
-                    </Button>
+                    <Button variant="link" className="w-full text-xs" render={<Link href="/admin/users?role=COLLECTOR" />}>Manage Workforce</Button>
                   </div>
                 </div>
               )}

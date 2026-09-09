@@ -59,8 +59,8 @@ export default function ForgotPasswordPage() {
               <div className="text-sm text-green-700 bg-green-50 p-4 rounded-md border border-green-200">
                 If an account exists for that email, a password reset link has been sent. Please check your inbox.
               </div>
-              <Button asChild className="w-full">
-                <Link href="/login">Return to login</Link>
+              <Button render={<Link href="/login" />} className="w-full">
+                Return to login
               </Button>
             </div>
           ) : (
